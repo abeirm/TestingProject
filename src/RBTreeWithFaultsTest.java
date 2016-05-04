@@ -7,9 +7,8 @@
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.testng.annotations.BeforeClass;
-
 import static org.junit.Assert.*;
 
 /**
@@ -17,22 +16,22 @@ import static org.junit.Assert.*;
  * @author AbeirLaptop
  */
 public class RBTreeWithFaultsTest {
-    
+
     public RBTreeWithFaultsTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -92,8 +91,8 @@ public class RBTreeWithFaultsTest {
         String result = instance.search(k);
         assertEquals(expResult, result);
     }
-    
-     /**
+
+    /**
      * Test of search method, of class RBTreeWithFaults.
      */
     @Test
@@ -110,8 +109,8 @@ public class RBTreeWithFaultsTest {
         String result = instance.search(k);
         assertEquals(expResult, result);
     }
-    
-     /**
+
+    /**
      * Test of search method, of class RBTreeWithFaults.
      */
     @Test
@@ -128,8 +127,8 @@ public class RBTreeWithFaultsTest {
         String result = instance.search(k);
         assertEquals(expResult, result);
     }
-    
-    
+
+
 
     /**
      * Test of insert method, of class RBTreeWithFaults.
@@ -283,5 +282,210 @@ public class RBTreeWithFaultsTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
+
+    /**
+     * Test of createInfinityNode method, of class RBTreeWithFaults.
+     */
+    public void testCreateInfinityNode() {
+        System.out.println("createInfinityNode");
+        RBTreeWithFaults.RBNode leftchild = null;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        RBTreeWithFaults.RBNode expResult = null;
+        RBTreeWithFaults.RBNode result = instance.createInfinityNode(leftchild);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of SearchNode method, of class RBTreeWithFaults.
+     */
+    @Test
+    public void testSearchNodeByNull() {
+        System.out.println("SearchNodeByNull");
+        int k = 2;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        RBTreeWithFaults.RBNode node = instance.createNullNode(instance.Root);
+        instance.createInfinityNode(node);
+        RBTreeWithFaults.RBNode expResult = null;
+        RBTreeWithFaults.RBNode result = instance.SearchNode(k, node);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of SearchNode method, of class RBTreeWithFaults.
+     */
+    @Test
+    public void testSearchNodeNotFoundLessThan() {
+        System.out.println("SearchNodeNotFoundLessThan");
+        int k = 3;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        RBTreeWithFaults.RBNode node = instance.new RBNode("value1",1, instance.Root);
+        RBTreeWithFaults.RBNode node2 = instance.new RBNode("value2",2, node);
+        RBTreeWithFaults.RBNode expResult = node;
+
+        RBTreeWithFaults.RBNode result = instance.SearchNode(k, node);
+        System.out.printf("node2: %s  result: %s", node2,result);
+        assertEquals(expResult, result);
+    }
+    /**
+     * Test of SearchNode method, of class RBTreeWithFaults.
+     */
+    @Test
+    public void testSearchNodeNotFoundMoreThan() {
+        System.out.println("SearchNodeNotFoundMoreThan");
+        int k = 0;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        RBTreeWithFaults.RBNode node = instance.new RBNode("value1",1, instance.Root);
+        RBTreeWithFaults.RBNode node2 = instance.new RBNode("value2",2, node);
+        RBTreeWithFaults.RBNode expResult = node;
+
+        RBTreeWithFaults.RBNode result = instance.SearchNode(k, node);
+        System.out.printf("node2: %s  result: %s", node2,result);
+        assertEquals(expResult, result);
+    }
+
+
+    /**
+     * Test of SearchNode method, of class RBTreeWithFaults.
+     */
+    @Test
+    public void testSearchNodeSuccess() {
+        System.out.println("SearchNodeSuccess");
+        int k = 2;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+//        RBTreeWithFaults.RBNode node = instance.new RBNode("value1",1, instance.Root);
+//        RBTreeWithFaults.RBNode node2 = instance.new RBNode("value2",2, node);
+        instance.insert(1,"value1");
+        instance.insert(2, "value2");
+        int expResult = 2;
+
+        RBTreeWithFaults.RBNode resultNode = instance.SearchNode(k, instance.Root);
+        int result = resultNode.getKey();
+//        System.out.printf("node2: %s  result: %s", node2,result);
+        assertEquals(expResult, result);
+    }
+
+
+    /**
+     * Test of fixUpTree method, of class RBTreeWithFaults.
+     */
+    public void testFixUpTree() {
+        System.out.println("fixUpTree");
+        RBTreeWithFaults.RBNode z = null;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        int expResult = 0;
+        int result = instance.fixUpTree(z);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of transplate method, of class RBTreeWithFaults.
+     */
+    public void testTransplate() {
+        System.out.println("transplate");
+        RBTreeWithFaults.RBNode x = null;
+        RBTreeWithFaults.RBNode y = null;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        instance.transplate(x, y);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of leftRotate method, of class RBTreeWithFaults.
+     */
+    public void testLeftRotate() {
+        System.out.println("leftRotate");
+        RBTreeWithFaults.RBNode x = null;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        instance.leftRotate(x);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of rightRotate method, of class RBTreeWithFaults.
+     */
+    public void testRightRotate() {
+        System.out.println("rightRotate");
+        RBTreeWithFaults.RBNode y = null;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        instance.rightRotate(y);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of deleteFixup method, of class RBTreeWithFaults.
+     */
+    public void testDeleteFixup() {
+        System.out.println("deleteFixup");
+        RBTreeWithFaults.RBNode x = null;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        int expResult = 0;
+        int result = instance.deleteFixup(x);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of minimumNode method, of class RBTreeWithFaults.
+     */
+    public void testMinimumNode() {
+        System.out.println("minimumNode");
+        RBTreeWithFaults.RBNode node = null;
+        RBTreeWithFaults.RBNode expResult = null;
+        RBTreeWithFaults.RBNode result = RBTreeWithFaults.minimumNode(node);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of isNullNode method, of class RBTreeWithFaults.
+     */
+    public void testIsNullNode() {
+        System.out.println("isNullNode");
+        RBTreeWithFaults.RBNode node = null;
+        boolean expResult = false;
+        boolean result = RBTreeWithFaults.isNullNode(node);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of ArrayOfStringsToArrayOfInts method, of class RBTreeWithFaults.
+     */
+    public void testArrayOfStringsToArrayOfInts() {
+        System.out.println("ArrayOfStringsToArrayOfInts");
+        String[] strArr = null;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        int[] expResult = null;
+        int[] result = instance.ArrayOfStringsToArrayOfInts(strArr);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of ElementsToString method, of class RBTreeWithFaults.
+     */
+    public void testElementsToString() {
+        System.out.println("ElementsToString");
+        RBTreeWithFaults.RBNode node = null;
+        boolean key = false;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        String expResult = "";
+        String result = instance.ElementsToString(node, key);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
 }

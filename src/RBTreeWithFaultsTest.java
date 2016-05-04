@@ -36,19 +36,6 @@ public class RBTreeWithFaultsTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getRoot method, of class RBTreeWithFaults.
-     */
-    @Test
-    public void testGetRoot() {
-        System.out.println("getRoot");
-        RBTreeWithFaults instance = new RBTreeWithFaults();
-        RBTreeWithFaults.RBNode expResult = null;
-        RBTreeWithFaults.RBNode result = instance.getRoot();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of createNullNode method, of class RBTreeWithFaults.
@@ -65,19 +52,7 @@ public class RBTreeWithFaultsTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of empty method, of class RBTreeWithFaults.
-     */
-    @Test
-    public void testEmpty() {
-        System.out.println("empty");
-        RBTreeWithFaults instance = new RBTreeWithFaults();
-        boolean expResult = false;
-        boolean result = instance.empty();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+
 
     /**
      * Test of search method, of class RBTreeWithFaults.
@@ -199,7 +174,7 @@ public class RBTreeWithFaultsTest {
      * Test of delete method, of class RBTreeWithFaults.
      */
     @Test
-    public void testDeleteValidKeyWithAsParent() {
+    public void testDeleteValidKeyWithParent() {
         System.out.println("deleteValidKeyAsParent");
         int k = 6;
         RBTreeWithFaults instance = new RBTreeWithFaults();
@@ -457,16 +432,34 @@ public class RBTreeWithFaultsTest {
     /**
      * Test of transplate method, of class RBTreeWithFaults.
      */
-    public void testTransplate() {
-        System.out.println("transplate");
-        RBTreeWithFaults.RBNode x = null;
-        RBTreeWithFaults.RBNode y = null;
+    @Test
+    public void testTransplateLeft() {
+        System.out.println("transplateLeft");
         RBTreeWithFaults instance = new RBTreeWithFaults();
+        instance.insert(1,"value1");
+        instance.insert(2,"value2");
+        instance.insert(3,"value3");
+        RBTreeWithFaults.RBNode x = instance.SearchNode(2,instance.Root);
+        RBTreeWithFaults.RBNode y = instance.SearchNode(3,instance.Root);
         instance.transplate(x, y);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(x.getParent().getLeft(),y.getParent().getLeft());
     }
 
+    /**
+     * Test of transplate method, of class RBTreeWithFaults.
+     */
+    @Test
+    public void testTransplateRight() {
+        System.out.println("transplateRight");
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        instance.insert(1,"value1");
+        instance.insert(2,"value2");
+        instance.insert(3,"value3");
+        RBTreeWithFaults.RBNode y = instance.SearchNode(2,instance.Root);
+        RBTreeWithFaults.RBNode x = instance.SearchNode(3,instance.Root);
+        instance.transplate(x, y);
+        assertEquals(x.getParent().getRight(),y.getParent().getRight());
+    }
     /**
      * Test of leftRotate method, of class RBTreeWithFaults.
      */

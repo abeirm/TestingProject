@@ -719,6 +719,27 @@ public class RBTreeWithFaults {
 	public class RBNode{
 		private String Value;
 		private int Key;
+
+		public String getValue() {
+			return Value;
+		}
+
+		public RBNode getLeft() {
+			return Left;
+		}
+
+		public RBNode getRight() {
+			return Right;
+		}
+
+		public RBNode getParent() {
+			return Parent;
+		}
+
+		public boolean isBlack() {
+			return Black;
+		}
+
 		private RBNode Left,Right,Parent;
 		private boolean Black;
 

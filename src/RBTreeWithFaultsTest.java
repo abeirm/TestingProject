@@ -150,17 +150,89 @@ public class RBTreeWithFaultsTest {
      * Test of delete method, of class RBTreeWithFaults.
      */
     @Test
-    public void testDelete() {
-        System.out.println("delete");
-        int k = 0;
+    public void testDeleteNotFound() {
+        System.out.println("deleteNotFound");
+        int k = 1;
         RBTreeWithFaults instance = new RBTreeWithFaults();
+        instance.insert(2, "value2");
+        instance.insert(3, "value3");
+        instance.insert(4, "value4");
+        int expResult = -1;
+        int result = instance.delete(k);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of delete method, of class RBTreeWithFaults.
+     */
+    @Test
+    public void testDeleteValidKeyWithNullLeftChild() {
+        System.out.println("deleteValidKeywithNullLeftChild");
+        int k = 4;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        instance.insert(2, "value2");
+        instance.insert(3, "value3");
+        instance.insert(4, "value4");
         int expResult = 0;
         int result = instance.delete(k);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
+    /**
+     * Test of delete method, of class RBTreeWithFaults.
+     */
+    @Test
+    public void testDeleteValidKeyWithNullRightChild() {
+        System.out.println("deleteValidKeyWithNullLRightChild");
+        int k = 5;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        instance.insert(2, "value2");
+        instance.insert(3, "value3");
+        instance.insert(5, "value5");
+        instance.insert(4, "value4");
+        int expResult = 1;
+        int result = instance.delete(k);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of delete method, of class RBTreeWithFaults.
+     */
+    @Test
+    public void testDeleteValidKeyWithAsParent() {
+        System.out.println("deleteValidKeyAsParent");
+        int k = 6;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        instance.insert(2, "value2");
+        instance.insert(3, "value3");
+        instance.insert(6, "value6");
+        instance.insert(4, "value4");
+        instance.insert(7, "value7");
+        instance.insert(5, "value5");
+        int expResult = 3;
+        int result = instance.delete(k);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of delete method, of class RBTreeWithFaults.
+     */
+    @Test
+    public void testDeleteValidKeyNotParent() {
+        System.out.println("deleteValidKeyNotParent");
+        int k = 6;
+        RBTreeWithFaults instance = new RBTreeWithFaults();
+        instance.insert(2, "value2");
+        instance.insert(3, "value3");
+        instance.insert(6, "value6");
+        instance.insert(4, "value4");
+        instance.insert(8, "value8");
+        instance.insert(5, "value5");
+        instance.insert(7, "value7");
+        int expResult = 0;
+        int result = instance.delete(k);
+        assertEquals(expResult, result);
+    }
     /**
      * Test of min method, of class RBTreeWithFaults.
      */

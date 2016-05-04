@@ -534,8 +534,7 @@ public class RBTreeWithFaults {
 	 */
 	public String max()
 	{
-		if(this.empty()){
-			return null;
+		if(this.empty()){return null;
 		}
 
 		return maxValue(this.Root.Left);

@@ -272,7 +272,7 @@ public class RBTreeWithFaults {
 	 * @param x - the parent node
 	 * @param y - left child root
 	 */
-	private void leftChild(RBNode x,RBNode y){
+	public void leftChild(RBNode x,RBNode y){
 		x.Left = y;
 		y.Parent = x;
 	}
@@ -283,7 +283,7 @@ public class RBTreeWithFaults {
 	 * @param x - the parent node
 	 * @param y - the right child node
 	 */
-	private void rightChild(RBNode x,RBNode y){
+	public void rightChild(RBNode x,RBNode y){
 		x.Right = y;
 		y.Parent = x;
 	}
@@ -294,7 +294,7 @@ public class RBTreeWithFaults {
 	 * @param x - the original child
 	 * @param y - the child after the change
 	 */
-	/*private*/ public void transplate(RBNode x, RBNode y){
+	 public void transplate(RBNode x, RBNode y){
 		if (x == x.Parent.Left){
 			leftChild(x.Parent,y);
 		}else{

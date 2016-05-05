@@ -388,7 +388,7 @@ public class RBTreeWithFaults {
 	 * @param x - the node to start the fixing from
 	 * @return number of color changes made while fixing the tree
 	 */
-	/*private*/ public int deleteFixup(RBNode x){
+	 public int deleteFixup(RBNode x){
 		//number of color changes
 		int counter = 0;
 		//run until x is the tree root and as long as x is black
@@ -511,7 +511,7 @@ public class RBTreeWithFaults {
 	 * @param node - the node to check
 	 * @return true if it is an infinity node. O.W false
 	 */
-	private boolean isInfinityNode(RBNode node){
+	public boolean isInfinityNode(RBNode node){
 		return node.Key == Integer.MAX_VALUE;
 	}
 
